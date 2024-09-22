@@ -1,13 +1,19 @@
-import DashboardView from '@/views/DashboardView.vue'
+import CourseDetailsView from '@/views/CourseDetailsView.vue'
+import CourseListView from '@/views/CourseListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: DashboardView
+      path: '/dashboard/courses/details',
+      name: 'details',
+      component: CourseDetailsView
+    },
+    {
+      path: '/dashboard/home',
+      name: 'home',
+      component: CourseListView
     }
     // {
     //   path: '/about',

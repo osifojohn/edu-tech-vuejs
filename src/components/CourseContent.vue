@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import {
-  Check,
-  CheckCircleIcon,
-  ChevronDownIcon,
-  FileTextIcon,
-  PlayCircleIcon
-} from 'lucide-vue-next'
+import { Check, ChevronDownIcon, FileTextIcon, PlayCircleIcon, Users } from 'lucide-vue-next'
 import PurchaseSidebar from './PurchaseSidebar.vue'
 import Accordion from './ui/accordion/Accordion.vue'
 import AccordionContent from './ui/accordion/AccordionContent.vue'
@@ -21,16 +15,22 @@ import CircleProgress from './ui/progress/CircleProgress.vue'
   <div class="flex flex-col lg:flex-row h-full">
     <main class="flex-1 lg:pr-5 bg-white">
       <div class="max-w-7xl mx-auto">
-        <div class="text-sm text-gray-500 mb-4">Top courses / UI/UX Designing</div>
+        <div class="text-sm text-gray-500 mb-4">
+          Top courses / <span class="text-black font-medium">UI/UX Designing</span>
+        </div>
 
         <div class="flex justify-between items-start">
           <div>
             <h1 class="text-2xl font-bold">The complete advanced 6-week UI/UX design bootcamp</h1>
-            <div class="mt-2 text-gray-600 flex items-center space-x-3">
-              <div class="text-yellow-500 font-bold">★ 4.9 (264,250 ratings)</div>
-              <div>1,936,922 students</div>
+            <div class="mt-2 flex items-center space-x-3">
+              <div class="font-bold text-[14px]">
+                <span class="text-yellow-500">★</span> 4.9 (264,250 ratings)
+              </div>
+              <div class="flex items-center space-x-[2px] text-[14px]">
+                <Users :size="13" /><span>1,936,922 students</span>
+              </div>
               <div>•</div>
-              <div>👨‍🏫 Dr. Marley Bator</div>
+              <div class="text-[14px]">👨‍🏫 Dr. Marley Bator</div>
             </div>
             <p class="mt-4 text-gray-600">
               Our 6-week UI/UX bootcamp equips students with the essential skills to become

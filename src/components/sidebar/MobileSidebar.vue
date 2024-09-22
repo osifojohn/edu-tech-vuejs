@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
 import type { JSX } from 'vue/jsx-runtime'
 import { MenuIcon } from 'lucide-vue-next'
 

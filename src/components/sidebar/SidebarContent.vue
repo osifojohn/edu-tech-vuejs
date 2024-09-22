@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// import SheetFooter from '../ui/sheet/SheetFooter.vue'
 import CustomHeader from './CustomHeader.vue'
 import {
   LucideGrid,
@@ -8,7 +9,6 @@ import {
   LucideHeart,
   LucideBell
 } from 'lucide-vue-next'
-import SheetFooter from './ui/sheet/SheetFooter.vue'
 
 const menuItems = [
   { name: 'Home', icon: LucideGrid },
@@ -40,7 +40,7 @@ const menuItems = [
         {{ item.name }}
       </a>
       <div class="mt-auto w-full">
-        <SheetFooter>jkkdfghj</SheetFooter>
+        <!-- <SheetFooter></SheetFooter> -->
       </div>
     </div>
   </div>
