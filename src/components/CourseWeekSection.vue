@@ -48,7 +48,7 @@ const sectionsWithProgress = computed(() => {
   <div class="mt-8">
     <div class="font-semibold text-lg">Course content</div>
 
-    <div v-if="isLoading" class="w-full"><LoadingSpinal /></div>
+    <div v-if="isLoading" class="w-full h-20"><LoadingSpinal /></div>
 
     <ErrorComponent v-if="error" :message="error" />
 
@@ -59,7 +59,9 @@ const sectionsWithProgress = computed(() => {
           {{ courseSections?.numbersOfLecture }} lectures •
           {{ courseSections?.totalLengthDuration }} total length
         </div>
-        <div class="text-[11px] md:text-sm text-blue-500 underline">Expand all sections</div>
+        <button class="text-[11px] cursor-pointer md:text-sm text-blue-500 underline">
+          Expand all sections
+        </button>
       </div>
 
       <Card class="px-0">
@@ -74,7 +76,7 @@ const sectionsWithProgress = computed(() => {
               <AccordionTrigger :isCourseContent="true">
                 <div class="w-full flex justify-between items-center mb-1 py-2">
                   <div class="font-semibold flex items-center justify-start">
-                    <data class="md:ml-1 text-[12px] lg:text-base">{{
+                    <data class="md:ml-1 text-[12px] lg:text-[13px]">{{
                       `Week ${section.week} - ${section.title}`
                     }}</data>
                   </div>

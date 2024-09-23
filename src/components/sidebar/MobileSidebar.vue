@@ -10,11 +10,10 @@ interface MobileSidebarProps {
 }
 
 const props = defineProps<MobileSidebarProps>()
-const isOpen = ref(false)
 </script>
 
 <template>
-  <Sheet v-model="isOpen">
+  <Sheet>
     <div class="mt-5 flex md:hidden">
       <div class="flex flex-1">
         <props.mobileDashboardHeader v-if="props.mobileDashboardHeader" />

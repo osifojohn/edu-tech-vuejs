@@ -44,19 +44,6 @@ export const useCourseStore = defineStore('courseStore', {
       }
     },
 
-    async fetchCourseDetail(id: string) {
-      this.courseDetailData.loading = true
-      this.courseDetailData.error = null
-      try {
-        const { data } = await axios.get(`http://localhost:8000/courses/${id}`)
-        this.courseDetailData.item = data
-      } catch (error) {
-        this.courseDetailData.error = 'Error fetching course details'
-      } finally {
-        this.courseDetailData.loading = false
-      }
-    },
-
     async fetchBuyCourseNow(id: string) {
       this.buyCourseNowData.loading = true
       this.buyCourseNowData.error = null

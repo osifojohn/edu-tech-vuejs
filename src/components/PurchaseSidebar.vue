@@ -24,6 +24,10 @@ const buyCourseNow = computed(() => courseStore.buyCourseNow)
 </script>
 
 <template>
+  <div v-if="isLoading" class="h-20 text-center mt-4">
+    <LoadingSpinal />
+  </div>
+  <ErrorComponent class="h-20" v-if="error" :message="error" />
   <Card>
     <CardContent class="mt-6">
       <CourseVideo
@@ -32,16 +36,7 @@ const buyCourseNow = computed(() => courseStore.buyCourseNow)
         :videoTitle="buyCourseNow.courseTitle"
       />
 
-      <div v-if="isLoading" class="text-center mt-4">
-        <LoadingSpinal />
-      </div>
-
-      <ErrorComponent
-        v-if="courseStore.getBuyCourseNowError"
-        :message="courseStore.getBuyCourseNowError"
-      />
-
-      <div v-else-if="buyCourseNow" class="rounded-lg">
+      <div v-if="buyCourseNow" class="rounded-lg">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-1 justify-between">
             <div class="text-2xl font-bold text-gray-900">

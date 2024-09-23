@@ -17,9 +17,8 @@ onMounted(async () => {
     <h1 class="text-3xl md:text-4xl w-full font-bold text-start text-gray-800 mb-8">Our Courses</h1>
 
     <!-- Loading state -->
-    <div v-if="courseStore.isCoursesLoading" class="w-full">
-      <LoadingSpinal />
-    </div>
+
+    <LoadingSpinal v-if="courseStore.isCoursesLoading" :size="50" />
 
     <!-- Error state -->
     <ErrorComponent v-if="courseStore.getCoursesError" :message="courseStore.getCoursesError" />

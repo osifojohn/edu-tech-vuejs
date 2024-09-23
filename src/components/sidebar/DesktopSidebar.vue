@@ -19,6 +19,7 @@ const props = defineProps<DesktopSidebarProps>()
         <props.sidebarContent />
       </div>
     </aside>
+
     <slot />
   </div>
 </template>

@@ -1,45 +1,73 @@
-# edu-tech
+# **Edu-Tech Frontend**
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is a dynamic, responsive web application for an education platform, built using **Vue 3**, **TypeScript**, **TailwindCSS**, and **Pinia** for state management. The application interacts with a mock API to fetch and display course data, ensuring a seamless user experience.
 
-## Recommended IDE Setup
+## **Project Overview**
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The application dynamically fetches and displays the following information:
 
-## Type Support for `.vue` Imports in TS
+- A list of available courses.
+- Detailed information about individual courses, including syllabus and instructor details.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### **Key Features**
 
-## Customize configuration
+- **Dynamic Course Listing:** Fetches and displays a list of courses from the mock API.
+- **Course Detail View:** Provides detailed information about each course.
+- **Responsive Design:** Optimized for mobile, tablet, and desktop screens.
+- **Loading State Handling:** Displays loading spinal if data fetching.
+- **Error Handling:** Displays error messages if data fetching fails.
+- **State Management:** Utilizes Pinia for state management of all fetched data.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## **Setup Instructions**
 
-## Project Setup
+To set up and run this project locally, follow these steps:
 
-```sh
+### 1. **Clone the repository**
+
+```bash
+git clone https://github.com/osifojohn/edu-tech-vuejs.git
+cd edu-tech
+```
+
+### 2. **Install Dependencies**
+
+Run the following command to install the necessary dependencies:
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 3. **Start the Mock API Server**
 
-```sh
+The JSON Server runs on port `8000` to serve the mock data for courses:
+
+```bash
+npm run server
+```
+
+### 4. **Start the Vue Development Server**
+
+To start the development server for the Vue.js frontend:
+
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The frontend will run at `http://localhost:3000/`.
 
-```sh
-npm run build
-```
+## **API Endpoints**
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+The application uses the following mock API endpoints to fetch data dynamically:
 
-```sh
-npm run test:unit
-```
+- `GET /courses`: Fetches a list of all available courses.
+- `GET /buyCourseNow/{id}`: Fetches purchase information for a specific course by ID.
+- `GET /aboutCourse/{courseId}`: Fetches detailed information about a specific course (e.g., instructor bio, syllabus).
+- `GET /courseSections/{id}`: Fetches the course sections and syllabus data.
 
-### Lint with [ESLint](https://eslint.org/)
+These endpoints are used in the store (`Pinia`) to manage and display data across the application.
 
-```sh
-npm run lint
-```
+## **Author**
+
+[Osifo John](https://github.com/osifojohn)
+
+Feel free to explore, contribute, or raise issues!

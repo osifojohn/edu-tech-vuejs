@@ -7,7 +7,7 @@ interface ISVGProps {
 }
 
 const props = defineProps<ISVGProps>()
-const { size = 24, className } = props
+const { size = 30, className } = props
 </script>
 
 <style scoped lang="ts"></style>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// import SheetFooter from '../ui/sheet/SheetFooter.vue'
-import { useRoute, RouterLink } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import CustomHeader from './CustomHeader.vue'
 import {
   LucideGrid,
@@ -11,6 +10,9 @@ import {
   LucideBell
 } from 'lucide-vue-next'
 import { computed } from 'vue'
+
+import SheetTrigger from '../ui/sheet/SheetTrigger.vue'
+import Sheet from '../ui/sheet/Sheet.vue'
 
 const route = useRoute()
 
@@ -24,33 +26,35 @@ const menuItems = [
 ]
 
 const isActive = (itemRoute: string) => {
-  return computed(() => route.name === itemRoute).value
+  return computed(() => route.name === itemRoute)
+}
+
+const router = useRouter()
+
+const handleNavigateToPage = (itemRoute: string) => {
+  router.push(`/dashboard/${itemRoute}`)
 }
 </script>
 
 <template>
-  <div class="flex flex-grow flex-col max-h-screen">
+  <div class="flex fixed flex-grow flex-col max-h-screen">
     <CustomHeader />
     <div class="flex-grow pt-10 h-[calc(92vh-40px)] flex flex-col w-full">
-      <RouterLink
+      <div
         v-for="(item, index) in menuItems"
         :key="index"
-        :to="item.route"
+        @click="handleNavigateToPage(item.route)"
         :class="[
-          'flex items-center mb-3 text-sm font-medium rounded-[2px] px-2 py-2.5 transition duration-200',
-          isActive(item?.route as string) ? 'bg-gray-200 font-semibold' : 'hover:bg-gray-100',
-          isActive(item?.route as string) ? 'bg-gray-200 font-semibold' : 'hover:bg-gray-100'
+          'flex items-center mb-3 text-sm font-medium rounded-[2px] px-2 pr-[110px] py-2.5 transition duration-200 cursor-pointer',
+          isActive(item.route).value ? 'bg-gray-200 font-semibold' : 'hover:bg-gray-100'
         ]"
       >
         <component
           :is="item.icon"
-          :class="[
-            'w-5 h-5 mr-3',
-            isActive(item?.route as string) ? 'text-blue-500' : 'text-gray-500'
-          ]"
+          :class="['w-5 h-5 mr-3', isActive(item.route).value ? 'text-blue-500' : 'text-gray-500']"
         />
         {{ item.labelName }}
-      </RouterLink>
+      </div>
       <div class="mt-auto w-full">
         <!-- <SheetFooter></SheetFooter> -->
       </div>

@@ -9,7 +9,7 @@
         "name": "Dr. Marley Bator",
         "qualifications": "PhD in Design"
       },
-      "progress": 10,
+      "progress": 3,
       "rating": {
         "average": 4.9,
         "totalRatings": 264250
@@ -19,6 +19,26 @@
       "courseIncludesId": "1",
       "sectionsId": "12345",
       "category": "Design"
+    },
+    {
+      "id": "2",
+      "title": "Mastering Frontend Development with React and Vue",
+      "description": "This 8-week course focuses on the fundamentals of frontend development using React and Vue. You will learn how to build modern, performant web applications with hands-on projects that simulate real-world scenarios.",
+      "image": "https://picsum.photos/seed/reactvue/200/300",
+      "instructor": {
+        "name": "Prof. Jane Albright",
+        "qualifications": "MSc in Computer Science"
+      },
+      "progress": 0,
+      "rating": {
+        "average": 4.7,
+        "totalRatings": 156800
+      },
+      "studentsEnrolled": 902384,
+      "priceId": "2",
+      "courseIncludesId": "2",
+      "sectionsId": "67890",
+      "category": "Development"
     }
   ],
   "prices": [
@@ -32,7 +52,7 @@
       "courseId": "2",
       "currentPrice": 258.0,
       "originalPrice": 345.0,
-      "discount": "85%"
+      "discount": "25%"
     }
   ],
   "aboutCourse": [
@@ -55,13 +75,33 @@
         "originalPrice": 3499.0,
         "discount": "85%"
       }
+    },
+    {
+      "id": "2",
+      "category": "Frontend Development",
+      "title": "Mastering Frontend Development with React and Vue",
+      "ratings": {
+        "average": 4.7,
+        "totalRatings": 156800
+      },
+      "studentsEnrolled": 902384,
+      "instructor": {
+        "name": "Prof. Jane Albright",
+        "qualifications": "MSc in Computer Science"
+      },
+      "description": "This 8-week course focuses on the fundamentals of frontend development using React and Vue. You will learn how to build modern, performant web applications with hands-on projects that simulate real-world scenarios.",
+      "price": {
+        "currentPrice": 258.0,
+        "originalPrice": 345.0,
+        "discount": "25%"
+      }
     }
   ],
   "buyCourseNow": [
     {
       "id": "1",
       "courseTitle": "The complete advanced 6-week UI/UX design bootcamp",
-      "videoUrl": "https://www.youtube.com/watch?v=kKAue9DiHc0",
+      "videoUrl": "https://www.youtube.com/watch?v=0RiggW_Vedg",
       "onDemandVideo": "65 hours on-demand video",
       "downloadableResources": 49,
       "access": ["mobile", "TV"],
@@ -73,9 +113,24 @@
         "originalPrice": 3499.0,
         "discount": "85%"
       }
+    },
+    {
+      "id": "2",
+      "courseTitle": "Mastering Frontend Development with React and Vue",
+      "videoUrl": "https://www.youtube.com/watch?v=0RiggW_Vedg",
+      "onDemandVideo": "40 hours on-demand video",
+      "downloadableResources": 35,
+      "access": ["mobile", "TV"],
+      "articles": 50,
+      "codingExercises": 15,
+      "certificateOfCompletion": true,
+      "price": {
+        "currentPrice": 258.0,
+        "originalPrice": 345.0,
+        "discount": "25%"
+      }
     }
   ],
-
   "courseSections": [
     {
       "id": "1",
@@ -93,14 +148,14 @@
               "duration": "2:45",
               "type": "video",
               "completed": true,
-              "videoUrl": "https://www.youtube.com/watch?v=example1"
+              "videoUrl": "https://www.youtube.com/watch?v=0RiggW_Vedg"
             },
             {
               "title": "Read before you start",
               "duration": "2:53",
               "type": "document",
-              "completed": true,
-              "pdfUrl": "https://example.com/document1.pdf"
+              "completed": false,
+              "pdfUrl": "https://drive.google.com/file/d/1TSFUMLyuTAxdWpFHtL3c9eW7IjaHo8nt/view?usp=sharing"
             },
             {
               "title": "What is the difference between UI & UX in Figma",
@@ -121,7 +176,7 @@
               "type": "quiz",
               "questions": 1,
               "completed": false,
-              "pdfUrl": "https://example.com/quiz1.pdf"
+              "pdfUrl": "https://drive.google.com/file/d/1TSFUMLyuTAxdWpFHtL3c9eW7IjaHo8nt/view?usp=sharing"
             }
           ]
         },
@@ -155,14 +210,14 @@
               "duration": "6:00",
               "type": "document",
               "completed": false,
-              "pdfUrl": "https://example.com/document2.pdf"
+              "pdfUrl": "https://drive.google.com/file/d/1TSFUMLyuTAxdWpFHtL3c9eW7IjaHo8nt/view?usp=sharing"
             },
             {
               "title": "Class project 03 - Create a wireframe",
               "type": "quiz",
               "questions": 2,
               "completed": false,
-              "pdfUrl": "https://example.com/quiz2.pdf"
+              "pdfUrl": "https://drive.google.com/file/d/1TSFUMLyuTAxdWpFHtL3c9eW7IjaHo8nt/view?usp=sharing"
             }
           ]
         },
@@ -189,14 +244,14 @@
               "duration": "4:45",
               "type": "document",
               "completed": false,
-              "pdfUrl": "https://example.com/document3.pdf"
+              "pdfUrl": "https://drive.google.com/file/d/1TSFUMLyuTAxdWpFHtL3c9eW7IjaHo8nt/view?usp=sharing"
             },
             {
               "title": "Class project 04 - Create a user persona",
               "type": "quiz",
               "questions": 1,
               "completed": false,
-              "pdfUrl": "https://example.com/quiz3.pdf"
+              "pdfUrl": "https://drive.google.com/file/d/1TSFUMLyuTAxdWpFHtL3c9eW7IjaHo8nt/view?usp=sharing"
             }
           ]
         },
@@ -223,14 +278,103 @@
               "duration": "5:00",
               "type": "document",
               "completed": false,
-              "pdfUrl": "https://example.com/document4.pdf"
+              "pdfUrl": "https://drive.google.com/file/d/1TSFUMLyuTAxdWpFHtL3c9eW7IjaHo8nt/view?usp=sharing"
             },
             {
               "title": "Class project 05 - Test your prototype",
               "type": "quiz",
               "questions": 1,
               "completed": false,
-              "pdfUrl": "https://example.com/quiz4.pdf"
+              "pdfUrl": "https://drive.google.com/file/d/1TSFUMLyuTAxdWpFHtL3c9eW7IjaHo8nt/view?usp=sharing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "totalSectionNumber": 4,
+      "numbersOfLecture": 8,
+      "totalLengthDuration": "1h 10m",
+      "purchasedByMe": false,
+      "sections": [
+        {
+          "week": 1,
+          "title": "Getting started with React",
+          "lessons": [
+            {
+              "title": "Introduction to React fundamentals",
+              "duration": "4:30",
+              "type": "video",
+              "completed": true,
+              "videoUrl": "https://www.youtube.com/watch?v=react1"
+            },
+            {
+              "title": "Understanding components in React",
+              "duration": "6:10",
+              "type": "video",
+              "completed": false,
+              "videoUrl": "https://www.youtube.com/watch?v=react2"
+            }
+          ]
+        },
+        {
+          "week": 2,
+          "title": "Advanced React Concepts",
+          "lessons": [
+            {
+              "title": "React Hooks deep dive",
+              "duration": "7:00",
+              "type": "video",
+              "completed": false,
+              "videoUrl": "https://www.youtube.com/watch?v=react3"
+            },
+            {
+              "title": "Context API and state management",
+              "duration": "8:30",
+              "type": "video",
+              "completed": false,
+              "videoUrl": "https://www.youtube.com/watch?v=react4"
+            }
+          ]
+        },
+        {
+          "week": 3,
+          "title": "Vue Basics",
+          "lessons": [
+            {
+              "title": "Introduction to Vue",
+              "duration": "5:00",
+              "type": "video",
+              "completed": false,
+              "videoUrl": "https://www.youtube.com/watch?v=vue1"
+            },
+            {
+              "title": "Building reusable components in Vue",
+              "duration": "6:45",
+              "type": "video",
+              "completed": false,
+              "videoUrl": "https://www.youtube.com/watch?v=vue2"
+            }
+          ]
+        },
+        {
+          "week": 4,
+          "title": "Vue with TypeScript",
+          "lessons": [
+            {
+              "title": "TypeScript in Vue.js applications",
+              "duration": "9:30",
+              "type": "video",
+              "completed": false,
+              "videoUrl": "https://www.youtube.com/watch?v=vue3"
+            },
+            {
+              "title": "Using Pinia for state management",
+              "duration": "7:15",
+              "type": "video",
+              "completed": false,
+              "videoUrl": "https://www.youtube.com/watch?v=vue4"
             }
           ]
         }
