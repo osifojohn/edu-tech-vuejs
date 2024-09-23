@@ -1,29 +1,79 @@
 <script setup lang="ts">
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import CourseVideo from './CourseVideo.vue'
+import { useCourseStore } from '@/stores/courseStore'
+import { onMounted, computed } from 'vue'
+import { formatCurrency } from '@/lib/utils'
+import { Code, Heart } from 'lucide-vue-next'
+import Button from './ui/button/Button.vue'
+
+const courseStore = useCourseStore()
+
+onMounted(async () => {
+  await courseStore.fetchBuyCourseNow('1')
+})
+
+const isLoading = computed(() => courseStore.buyCourseNowData.loading)
+const error = computed(() => courseStore.buyCourseNowData.error)
+const buyCourseNow = computed(() => courseStore.buyCourseNow)
 </script>
 
 <template>
   <Card>
     <CardContent class="mt-6">
-      <CourseVideo />
-      <div class="rounded-lg">
-        <div class="text-3xl font-bold text-gray-900">$549.00</div>
-        <div class="text-gray-500 line-through">$3,499.00</div>
-        <div class="text-green-500 font-bold">85% off</div>
-        <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg">Buy Now</button>
+      <CourseVideo
+        v-if="!isLoading && !error && buyCourseNow"
+        :videoUrl="buyCourseNow.videoUrl"
+        :videoTitle="buyCourseNow.courseTitle"
+      />
+
+      <div v-if="isLoading" class="text-center mt-4">
+        <p>Loading purchase details...</p>
+      </div>
+
+      <div v-if="error" class="text-red-500 text-center mt-4">
+        <p>{{ error }}</p>
+      </div>
+
+      <div v-else-if="buyCourseNow" class="rounded-lg">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-1 justify-between">
+            <div class="text-2xl font-bold text-gray-900">
+              {{ formatCurrency(buyCourseNow.price.currentPrice) }}
+            </div>
+            <div class="text-gray-500 text-sm line-through">
+              {{ formatCurrency(buyCourseNow.price.originalPrice) }}
+            </div>
+          </div>
+          <div class="text-red-500 font-bold">{{ buyCourseNow.price.discount }} off</div>
+        </div>
+        <div class="flex mt-4 items-center justify-between">
+          <Button class="bg-blue-500 min-w-[290px] md:min-w-[220px] text-white py-2 rounded-lg"
+            >Buy Now</Button
+          >
+
+          <Button
+            class="flex rounded-lg text-black hover:bg-gray-100 bg-transparent items-start justify-center"
+            ><Heart :size="20"
+          /></Button>
+        </div>
         <div class="mt-4">
           <ul class="text-sm space-y-2">
-            <li>🎥 65 hours on-demand video</li>
-            <li>📁 49 downloadable resources</li>
-            <li>📱 Access on mobile and TV</li>
-            <li>📄 86 articles</li>
-            <li>💻 8 coding exercises</li>
-            <li>📜 Certificate of completion</li>
+            <li>🎥 {{ buyCourseNow.onDemandVideo }}</li>
+            <li>📁 {{ buyCourseNow.downloadableResources }} downloadable resources</li>
+            <li>📱 Access on {{ buyCourseNow.access.join(', ') }}</li>
+            <li>📄 {{ buyCourseNow.articles }} articles</li>
+            <li class="flex justify-start items-center">
+              <Code :size="12" class="mx-1" /> {{ buyCourseNow.codingExercises }} coding exercises
+            </li>
+            <li>
+              📜 Certificate of completion:
+              {{ buyCourseNow.certificateOfCompletion ? 'Yes' : 'No' }}
+            </li>
           </ul>
         </div>
-      </div></CardContent
-    >
+      </div>
+    </CardContent>
     <CardFooter></CardFooter>
   </Card>
 </template>

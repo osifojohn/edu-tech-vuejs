@@ -1,19 +1,8 @@
 <script setup lang="ts">
+import type { Course } from '@/types'
 import { defineProps } from 'vue'
 
-interface Course {
-  id: number
-  title: string
-  description: string
-  image: string
-  instructor: string
-  progress: number
-  rating: number
-  studentsEnrolled: number
-  duration: string
-}
-
-const props = defineProps<{ course: Course }>()
+const { course } = defineProps<{ course: Course }>()
 </script>
 
 <template>
@@ -22,11 +11,11 @@ const props = defineProps<{ course: Course }>()
 
     <div class="p-4">
       <h3 class="text-lg font-bold mb-2">{{ course.title }}</h3>
-      <p class="text-gray-600 mb-4">{{ course.description }}</p>
+      <!-- <p class="text-gray-600 mb-4">{{ course.description }}</p> -->
 
       <div class="flex items-center justify-between mb-4">
-        <span class="text-sm text-gray-500">By: {{ course.instructor }}</span>
-        <span class="text-sm text-yellow-500">⭐ {{ course.rating }}</span>
+        <span class="text-sm text-gray-500">By: {{ course.instructor.name }}</span>
+        <span class="text-sm text-yellow-500">⭐ {{ course.rating?.average }}</span>
       </div>
 
       <div class="flex items-center justify-between mb-4">

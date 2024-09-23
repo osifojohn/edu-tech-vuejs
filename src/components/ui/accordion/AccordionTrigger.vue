@@ -5,9 +5,11 @@ import { ChevronDownIcon } from '@radix-icons/vue'
 import { cn } from '@/lib/utils'
 
 const props = withDefaults(
-  defineProps<AccordionTriggerProps & { class?: HTMLAttributes['class']; showIcon?: boolean }>(),
+  defineProps<
+    AccordionTriggerProps & { class?: HTMLAttributes['class']; isCourseContent?: boolean }
+  >(),
   {
-    showIcon: true
+    isCourseContent: false
   }
 )
 
@@ -24,18 +26,18 @@ const delegatedProps = computed(() => {
       :class="
         cn(
           `flex flex-1 items-center justify-between  text-sm font-medium transition-all  [&[data-state=open]>svg]:rotate-180`,
-          props.showIcon ? 'hover:underline py-4' : '',
+          !props.isCourseContent ? 'hover:underline py-4' : '',
           props.class
         )
       "
     >
-      <slot />
       <slot name="icon">
         <ChevronDownIcon
-          v-if="props.showIcon"
+          v-if="props.isCourseContent"
           class="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200"
         />
       </slot>
+      <slot />
     </AccordionTrigger>
   </AccordionHeader>
 </template>
