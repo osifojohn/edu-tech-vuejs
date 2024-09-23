@@ -1,0 +1,7 @@
+export { default as AchievementsView } from './AchievementsView.vue'
+export { default as CourseDetailsView } from './CourseDetailsView.vue'
+export { default as CourseListView } from './CourseListView.vue'
+export { default as HomeView } from './HomeView.vue'
+export { default as MessagesView } from './MessagesView.vue'
+export { default as NotificationsView } from './NotificationsView.vue'
+export { default as WishlistView } from './WishlistView.vue'

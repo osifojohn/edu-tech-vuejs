@@ -13,7 +13,7 @@ const props = defineProps({
 })
 
 const progressStyle = computed(() => ({
-  background: `radial-gradient(closest-side, white 79%, transparent 80% 100%), conic-gradient(green ${props.value}%, gray 0)`
+  background: `radial-gradient(closest-side, white 79%, transparent 80% 100%), conic-gradient(blue ${props.value}%, gray 0)`
 }))
 </script>
 

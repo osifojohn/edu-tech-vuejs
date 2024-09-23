@@ -1,6 +1,15 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
 import { SidebarContent, CustomHeader, MainSidebar } from '../src/components/sidebar'
+import { onMounted } from 'vue'
+
+const router = useRouter()
+
+onMounted(() => {
+  if (router.currentRoute.value.path === '/') {
+    router.push('/dashboard/courses')
+  }
+})
 </script>
 
 <template>

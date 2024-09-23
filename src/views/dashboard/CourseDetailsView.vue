@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CourseContent from '@/components/CourseContent.vue'
+import CourseContent from '../../components/CourseContent.vue'
 </script>
 
 <template>

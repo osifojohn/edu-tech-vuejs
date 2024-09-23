@@ -11,11 +11,17 @@ import AccordionTrigger from './ui/accordion/AccordionTrigger.vue'
 import CircleProgress from './ui/progress/CircleProgress.vue'
 import AccordionContent from './ui/accordion/AccordionContent.vue'
 import Card from './ui/card/Card.vue'
+import { useRoute } from 'vue-router'
+import ErrorComponent from './ErrorComponent.vue'
+import LoadingSpinal from './LoadingSpinal.vue'
+
+const route = useRoute()
 
 const courseStore = useCourseStore()
 
 onMounted(async () => {
-  await courseStore.fetchCourseSections('1')
+  const courseId = route.params.id
+  await courseStore.fetchCourseSections(courseId as string)
 })
 
 const isLoading = computed(() => courseStore.courseSectionsData.loading)
@@ -42,17 +48,18 @@ const sectionsWithProgress = computed(() => {
   <div class="mt-8">
     <div class="font-semibold text-lg">Course content</div>
 
-    <div v-if="isLoading" class="text-gray-500">Loading...</div>
-    <div v-if="error" class="text-red-500">{{ error }}</div>
+    <div v-if="isLoading" class="w-full"><LoadingSpinal /></div>
+
+    <ErrorComponent v-if="error" :message="error" />
 
     <div v-else>
       <div class="flex items-center justify-between mt-2 mb-3">
-        <div class="text-sm text-gray-500">
+        <div class="text-[12px] md:text-sm text-gray-500">
           {{ courseSections?.totalSectionNumber }} sections •
           {{ courseSections?.numbersOfLecture }} lectures •
           {{ courseSections?.totalLengthDuration }} total length
         </div>
-        <div class="text-sm text-blue-500 underline">Expand all sections</div>
+        <div class="text-[11px] md:text-sm text-blue-500 underline">Expand all sections</div>
       </div>
 
       <Card class="px-0">
@@ -66,8 +73,10 @@ const sectionsWithProgress = computed(() => {
             >
               <AccordionTrigger :isCourseContent="true">
                 <div class="w-full flex justify-between items-center mb-1 py-2">
-                  <div class="font-semibold flex items-center">
-                    <data class="ml-1">{{ `Week ${section.week} - ${section.title}` }}</data>
+                  <div class="font-semibold flex items-center justify-start">
+                    <data class="md:ml-1 text-[12px] lg:text-base">{{
+                      `Week ${section.week} - ${section.title}`
+                    }}</data>
                   </div>
                 </div>
                 <CircleProgress :value="section.progress" />

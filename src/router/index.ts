@@ -1,28 +1,31 @@
-import CourseDetailsView from '@/views/CourseDetailsView.vue'
-import CourseListView from '@/views/CourseListView.vue'
+import {
+  MessagesView,
+  NotificationsView,
+  WishlistView,
+  AchievementsView,
+  CourseDetailsView,
+  CourseListView,
+  HomeView
+} from '@/views/dashboard'
+
+import NotFoundView from '@/views/NotFoundView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    { path: '/dashboard/home', name: 'home', component: HomeView },
+    { path: '/dashboard/courses', name: 'courses', component: CourseListView },
+    { path: '/dashboard/courses/:id', name: 'courseDetails', component: CourseDetailsView },
+    { path: '/dashboard/achievements', name: 'achievements', component: AchievementsView },
+    { path: '/dashboard/messages', name: 'messages', component: MessagesView },
+    { path: '/dashboard/wishlist', name: 'wishlist', component: WishlistView },
+    { path: '/dashboard/notifications', name: 'notifications', component: NotificationsView },
     {
-      path: '/dashboard/courses/details',
-      name: 'details',
-      component: CourseDetailsView
-    },
-    {
-      path: '/dashboard/home',
-      name: 'home',
-      component: CourseListView
+      path: '/:catchAll(.*)',
+      name: 'not-found',
+      component: NotFoundView
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
   ]
 })
 

@@ -79,7 +79,7 @@
   "courseSections": [
     {
       "id": "1",
-      "totalSectionNumber": 3,
+      "totalSectionNumber": 4,
       "numbersOfLecture": 10,
       "totalLengthDuration": "1h 33m",
       "purchasedByMe": false,
@@ -168,7 +168,7 @@
         },
         {
           "week": 3,
-          "title": "Beginner - The basics of user experience design",
+          "title": "Beginner - The basics of UX design",
           "lessons": [
             {
               "title": "Understanding user personas",

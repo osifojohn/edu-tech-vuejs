@@ -6,11 +6,16 @@ import { onMounted, computed } from 'vue'
 import { formatCurrency } from '@/lib/utils'
 import { Code, Heart } from 'lucide-vue-next'
 import Button from './ui/button/Button.vue'
+import { useRoute } from 'vue-router'
+import LoadingSpinal from './LoadingSpinal.vue'
+import ErrorComponent from './ErrorComponent.vue'
 
 const courseStore = useCourseStore()
+const route = useRoute()
 
 onMounted(async () => {
-  await courseStore.fetchBuyCourseNow('1')
+  const courseId = route.params.id
+  await courseStore.fetchBuyCourseNow(courseId as string)
 })
 
 const isLoading = computed(() => courseStore.buyCourseNowData.loading)
@@ -28,12 +33,13 @@ const buyCourseNow = computed(() => courseStore.buyCourseNow)
       />
 
       <div v-if="isLoading" class="text-center mt-4">
-        <p>Loading purchase details...</p>
+        <LoadingSpinal />
       </div>
 
-      <div v-if="error" class="text-red-500 text-center mt-4">
-        <p>{{ error }}</p>
-      </div>
+      <ErrorComponent
+        v-if="courseStore.getBuyCourseNowError"
+        :message="courseStore.getBuyCourseNowError"
+      />
 
       <div v-else-if="buyCourseNow" class="rounded-lg">
         <div class="flex items-center justify-between">

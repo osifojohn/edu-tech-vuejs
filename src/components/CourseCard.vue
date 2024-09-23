@@ -1,17 +1,25 @@
 <script setup lang="ts">
 import type { Course } from '@/types'
 import { defineProps } from 'vue'
+import { useRouter } from 'vue-router'
 
 const { course } = defineProps<{ course: Course }>()
+const router = useRouter()
+
+const navigateToCourse = () => {
+  router.push({ name: 'courseDetails', params: { id: course.id } })
+}
 </script>
 
 <template>
-  <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+  <div
+    @click="navigateToCourse"
+    class="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer"
+  >
     <img :src="course.image" alt="Course Image" class="w-full h-40 object-cover" />
 
     <div class="p-4">
       <h3 class="text-lg font-bold mb-2">{{ course.title }}</h3>
-      <!-- <p class="text-gray-600 mb-4">{{ course.description }}</p> -->
 
       <div class="flex items-center justify-between mb-4">
         <span class="text-sm text-gray-500">By: {{ course.instructor.name }}</span>
