@@ -61,7 +61,7 @@ The application uses the following mock API endpoints to fetch data dynamically:
 
 - `GET /courses`: Fetches a list of all available courses.
 - `GET /buyCourseNow/{id}`: Fetches purchase information for a specific course by ID.
-- `GET /aboutCourse/{courseId}`: Fetches detailed information about a specific course (e.g., instructor bio, syllabus).
+- `GET /aboutCourse/{courseId}`: Fetches detailed information about a specific course (e.g., instructor bio, rating, course category, number of enrolled students, course description, etc).
 - `GET /courseSections/{id}`: Fetches the course sections and syllabus data.
 
 These endpoints are used in the store (`Pinia`) to manage and display data across the application.
