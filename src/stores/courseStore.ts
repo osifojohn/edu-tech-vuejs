@@ -1,5 +1,10 @@
 import { defineStore } from 'pinia'
-import axios from 'axios'
+import {
+  fetchCourses,
+  fetchBuyCourseNow,
+  fetchAboutCourse,
+  fetchCourseSections
+} from '@/services/courseService'
 import type { AboutCourse, BuyCourseNow, Course, CourseDetail, CourseSection } from '@/types'
 
 export const useCourseStore = defineStore('courseStore', {
@@ -35,8 +40,7 @@ export const useCourseStore = defineStore('courseStore', {
       this.coursesData.loading = true
       this.coursesData.error = null
       try {
-        const { data } = await axios.get('http://localhost:8000/courses')
-        this.coursesData.items = data
+        this.coursesData.items = await fetchCourses()
       } catch (error) {
         this.coursesData.error = 'Error fetching courses'
       } finally {
@@ -48,8 +52,7 @@ export const useCourseStore = defineStore('courseStore', {
       this.buyCourseNowData.loading = true
       this.buyCourseNowData.error = null
       try {
-        const { data } = await axios.get<BuyCourseNow>(`http://localhost:8000/buyCourseNow/${id}`)
-        this.buyCourseNowData.item = data
+        this.buyCourseNowData.item = await fetchBuyCourseNow(id)
       } catch (error) {
         this.buyCourseNowData.error = 'Failed to fetch course purchase data.'
       } finally {
@@ -62,25 +65,20 @@ export const useCourseStore = defineStore('courseStore', {
       this.aboutCourseData.error = null
 
       try {
-        const { data } = await axios.get<AboutCourse>(
-          `http://localhost:8000/aboutCourse/${courseId}`
-        )
-        this.aboutCourseData.item = data
+        this.aboutCourseData.item = await fetchAboutCourse(courseId)
       } catch (error) {
         this.aboutCourseData.error = 'Failed to fetch course details.'
       } finally {
         this.aboutCourseData.loading = false
       }
     },
+
     async fetchCourseSections(id: string) {
       this.courseSectionsData.loading = true
       this.courseSectionsData.error = null
 
       try {
-        const { data } = await axios.get<CourseSection>(
-          `http://localhost:8000/courseSections/${id}`
-        )
-        this.courseSectionsData.item = data
+        this.courseSectionsData.item = await fetchCourseSections(id)
       } catch (error) {
         this.courseSectionsData.error = 'Failed to fetch course sections.'
       } finally {
