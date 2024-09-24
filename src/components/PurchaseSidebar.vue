@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import PurchaseVideo from './PurchaseVideo.vue'
 import { useCourseStore } from '@/stores/courseStore'
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref } from 'vue'
 import { formatCurrency } from '@/lib/utils'
 import { Code, Heart } from 'lucide-vue-next'
 import Button from './ui/button/Button.vue'
@@ -12,10 +12,29 @@ import ErrorComponent from './ErrorComponent.vue'
 
 const courseStore = useCourseStore()
 const route = useRoute()
+const isFavorite = ref(false)
+
+const toggleFavorite = () => {
+  const courseId = route.params.id as string
+  isFavorite.value = !isFavorite.value
+
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]')
+
+  if (isFavorite.value) {
+    favorites.push(courseId)
+  } else {
+    favorites = favorites.filter((id: string) => id !== courseId)
+  }
+
+  localStorage.setItem('favorites', JSON.stringify(favorites))
+}
 
 onMounted(async () => {
-  const courseId = route.params.id
-  await courseStore.fetchBuyCourseNow(courseId as string)
+  const courseId = route.params.id as string
+  await courseStore.fetchBuyCourseNow(courseId)
+
+  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]')
+  isFavorite.value = favorites.includes(courseId)
 })
 
 const isLoading = computed(() => courseStore.buyCourseNowData.loading)
@@ -49,14 +68,16 @@ const buyCourseNow = computed(() => courseStore.buyCourseNow)
           <div class="text-red-500 font-bold">{{ buyCourseNow.price.discount }} off</div>
         </div>
         <div class="flex mt-4 items-center justify-between">
-          <Button class="bg-blue-500 min-w-[290px] md:min-w-[220px] text-white py-2 rounded-lg"
-            >Buy Now</Button
-          >
+          <Button class="bg-blue-500 min-w-[290px] md:min-w-[220px] text-white py-2 rounded-lg">
+            Buy Now
+          </Button>
 
           <Button
             class="flex rounded-lg text-black hover:bg-gray-100 bg-transparent items-start justify-center"
-            ><Heart :size="20"
-          /></Button>
+            @click="toggleFavorite"
+          >
+            <Heart :size="20" :class="{ 'text-red-500': isFavorite }" />
+          </Button>
         </div>
         <div class="mt-4">
           <ul class="text-sm space-y-2">

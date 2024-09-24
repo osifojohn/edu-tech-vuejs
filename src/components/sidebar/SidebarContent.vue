@@ -11,6 +11,7 @@ import {
   LucideBell,
   Code
 } from 'lucide-vue-next'
+import SheetFooter from '../ui/sheet/SheetFooter.vue'
 
 interface SidebarProps {
   toggleSidebar: (state: boolean) => void
@@ -57,7 +58,7 @@ const handleNavigateToPage = (itemRoute: string) => {
         />
         {{ item.labelName }}
       </div>
-      <div class="mt-auto w-full">
+      <div class="mt-auto flex justify-start w-full">
         <SheetFooter
           ><div class="flex items-center space-x-2 cursor-pointer">
             <img
