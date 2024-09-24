@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="w-full h-64 mb-4">
+  <div class="w-full h-56 mb-4">
     <iframe
       class="w-full h-full rounded-lg"
       :src="`https://www.youtube.com/embed/${props.videoUrl.split('v=')[1]}`"

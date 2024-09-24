@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import CustomHeader from './CustomHeader.vue'
 import {
   LucideGrid,
@@ -8,15 +8,13 @@ import {
   LucideGraduationCap,
   LucideMessageCircleCode,
   LucideHeart,
-  LucideBell
+  LucideBell,
+  Code
 } from 'lucide-vue-next'
 
 interface SidebarProps {
   toggleSidebar: (state: boolean) => void
 }
-
-import SheetTrigger from '../ui/sheet/SheetTrigger.vue'
-import Sheet from '../ui/sheet/Sheet.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -32,11 +30,7 @@ const menuItems = [
   { labelName: 'Notifications', icon: LucideBell, route: 'notifications' }
 ]
 
-const isSidebarOpen = ref(false)
-
-const isActive = (itemRoute: string) => {
-  return computed(() => route.name === itemRoute)
-}
+const isActive = (itemRoute: string) => computed(() => route.name === itemRoute)
 
 const handleNavigateToPage = (itemRoute: string) => {
   router.push(`/dashboard/${itemRoute}`)
@@ -64,19 +58,19 @@ const handleNavigateToPage = (itemRoute: string) => {
         {{ item.labelName }}
       </div>
       <div class="mt-auto w-full">
-        <!-- <SheetFooter></SheetFooter> -->
+        <SheetFooter
+          ><div class="flex items-center space-x-2 cursor-pointer">
+            <img
+              src="../../assets/images/profile_img.jpg"
+              alt="User Avatar"
+              class="w-10 h-10 rounded-full object-cover"
+            />
+            <span class="font-medium text-[14px] text-gray-900">William Smith</span>
+            <Code class="w-4 h-4 text-gray-600 rotate-90" /></div
+        ></SheetFooter>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-a.active {
-  background-color: #e2e8f0;
-  font-weight: bold;
-}
-
-a:hover {
-  background-color: #f3f4f6;
-}
-</style>
+<style scoped></style>

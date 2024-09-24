@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, provide } from 'vue'
 import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
 import type { JSX } from 'vue/jsx-runtime'
 import { MenuIcon } from 'lucide-vue-next'
@@ -16,6 +16,9 @@ const isSidebarOpen = ref(false)
 const toggleSidebar = (state: boolean) => {
   isSidebarOpen.value = state
 }
+
+provide('isSidebarOpen', isSidebarOpen)
+provide('toggleSidebar', toggleSidebar)
 </script>
 
 <template>

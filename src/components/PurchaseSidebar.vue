@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import CourseVideo from './CourseVideo.vue'
+import PurchaseVideo from './PurchaseVideo.vue'
 import { useCourseStore } from '@/stores/courseStore'
 import { onMounted, computed } from 'vue'
 import { formatCurrency } from '@/lib/utils'
 import { Code, Heart } from 'lucide-vue-next'
 import Button from './ui/button/Button.vue'
-import { useRoute } from 'vue-router'
 import LoadingSpinal from './LoadingSpinal.vue'
 import ErrorComponent from './ErrorComponent.vue'
 
@@ -30,7 +30,7 @@ const buyCourseNow = computed(() => courseStore.buyCourseNow)
   <ErrorComponent class="h-20" v-if="error" :message="error" />
   <Card>
     <CardContent class="mt-6">
-      <CourseVideo
+      <PurchaseVideo
         v-if="!isLoading && !error && buyCourseNow"
         :videoUrl="buyCourseNow.videoUrl"
         :videoTitle="buyCourseNow.courseTitle"
