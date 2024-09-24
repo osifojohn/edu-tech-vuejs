@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { AboutCourse, BuyCourseNow, Course, CourseSection } from '@/types'
 
-axios.defaults.baseURL = 'http://localhost:8000'
+axios.defaults.baseURL = 'https://edu-tech-vuejs.netlify.app'
 
 export const fetchCourses = async (): Promise<Course[]> => {
   const { data } = await axios.get<Course[]>('/courses')
