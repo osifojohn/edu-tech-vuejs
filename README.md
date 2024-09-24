@@ -95,6 +95,7 @@ src-directory/
 ├── components/       # Reusable Vue components
 ├── lib/              # Library functions and utilities
 ├── router/           # Vue Router configuration and navigation
+├── services/         # API service functions for data fetching
 ├── stores/           # State management using Pinia
 ├── types/            # Type definitions for TypeScript
 ├── views/            # Vue components representing different pages
@@ -102,6 +103,7 @@ src-directory/
 ├── db.json           # Mock API data with json-server
 ├── main.ts           # Entry point for the application
 └── vue-shim.d.ts     # TypeScript declaration for Vue files
+
 ```
 
 ## **Future Improvements**
