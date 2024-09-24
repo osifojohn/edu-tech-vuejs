@@ -10,6 +10,12 @@ interface MobileSidebarProps {
 }
 
 const props = defineProps<MobileSidebarProps>()
+
+const isSidebarOpen = ref(false)
+
+const toggleSidebar = (state: boolean) => {
+  isSidebarOpen.value = state
+}
 </script>
 
 <template>
@@ -18,13 +24,16 @@ const props = defineProps<MobileSidebarProps>()
       <div class="flex flex-1">
         <props.mobileDashboardHeader v-if="props.mobileDashboardHeader" />
       </div>
-      <SheetTrigger>
+
+      <SheetTrigger @click="toggleSidebar(true)">
         <MenuIcon :size="24" />
       </SheetTrigger>
     </div>
-    <SheetContent side="left">
-      <props.sidebarContent />
+
+    <SheetContent side="left" v-if="isSidebarOpen">
+      <props.sidebarContent :toggleSidebar="toggleSidebar" />
     </SheetContent>
   </Sheet>
+
   <slot />
 </template>

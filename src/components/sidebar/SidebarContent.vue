@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
 import CustomHeader from './CustomHeader.vue'
 import {
   LucideGrid,
@@ -9,12 +10,18 @@ import {
   LucideHeart,
   LucideBell
 } from 'lucide-vue-next'
-import { computed } from 'vue'
+
+interface SidebarProps {
+  toggleSidebar: (state: boolean) => void
+}
 
 import SheetTrigger from '../ui/sheet/SheetTrigger.vue'
 import Sheet from '../ui/sheet/Sheet.vue'
 
 const route = useRoute()
+const router = useRouter()
+
+const props = defineProps<SidebarProps>()
 
 const menuItems = [
   { labelName: 'Home', icon: LucideGrid, route: 'home' },
@@ -25,14 +32,15 @@ const menuItems = [
   { labelName: 'Notifications', icon: LucideBell, route: 'notifications' }
 ]
 
+const isSidebarOpen = ref(false)
+
 const isActive = (itemRoute: string) => {
   return computed(() => route.name === itemRoute)
 }
 
-const router = useRouter()
-
 const handleNavigateToPage = (itemRoute: string) => {
   router.push(`/dashboard/${itemRoute}`)
+  props.toggleSidebar(false)
 }
 </script>
 
