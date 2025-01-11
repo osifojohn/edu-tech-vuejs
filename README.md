@@ -10,6 +10,7 @@ This project is a dynamic, responsive web application for an education platform,
 - [Setup Instructions](#setup-instructions)
 - [API Endpoints](#api-endpoints)
 - [Project Structure](#project-structure)
+- [Data Source](#data-source)
 - [Future Improvements](#future-improvements)
 - [Author](#author)
 
@@ -55,15 +56,7 @@ Run the following command to install the necessary dependencies:
 npm install
 ```
 
-### 3. Start the Mock API Server
-
-The JSON Server runs on port `8000` to serve the mock data for courses:
-
-```bash
-npm run server
-```
-
-### 4. Start the Vue Development Server
+### 3. Start the Vue Development Server
 
 To start the development server for the Vue.js frontend:
 
@@ -103,8 +96,26 @@ src-directory/
 ├── db.json           # Mock API data with json-server
 ├── main.ts           # Entry point for the application
 └── vue-shim.d.ts     # TypeScript declaration for Vue files
-
 ```
+
+## **Data Source**
+
+The application utilizes [My JSON Server](https://my-json-server.typicode.com) (JSONPlaceholder) as a mock REST API for development and testing. Below are the relevant endpoints:
+
+- **Database Endpoint**:
+  For courses, prices, aboutCourse, and buyCourseNow
+  [`https://my-json-server.typicode.com/osifojohn/edu-tech-db`](https://my-json-server.typicode.com/osifojohn/edu-tech-db)
+
+  For courseSections
+  [`https://my-json-server.typicode.com/osifojohn/edu-tech-db-course-section`](https://my-json-server.typicode.com/osifojohn/edu-tech-db-course-section)
+
+The mock API provides endpoints for:
+
+- courses
+- prices
+- aboutCourse
+- buyCourseNow
+- courseSections
 
 ## **Future Improvements**
 
