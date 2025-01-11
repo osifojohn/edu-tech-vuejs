@@ -12,6 +12,7 @@ import {
   Code
 } from 'lucide-vue-next'
 import SheetFooter from '../ui/sheet/SheetFooter.vue'
+import { DASHBOARD_BASE } from '@/lib/constants'
 
 interface SidebarProps {
   toggleSidebar: (state: boolean) => void
@@ -31,10 +32,14 @@ const menuItems = [
   { labelName: 'Notifications', icon: LucideBell, route: 'notifications' }
 ]
 
-const isActive = (itemRoute: string) => computed(() => route.name === itemRoute)
+const activeStates = computed(() =>
+  Object.fromEntries(
+    menuItems.map(({ route: itemRoute }) => [itemRoute, route.path.includes(`/${itemRoute}`)])
+  )
+)
 
 const handleNavigateToPage = (itemRoute: string) => {
-  router.push(`/dashboard/${itemRoute}`)
+  router.push(`${DASHBOARD_BASE}/${itemRoute}`)
   props.toggleSidebar(false)
 }
 </script>
@@ -48,27 +53,28 @@ const handleNavigateToPage = (itemRoute: string) => {
         :key="index"
         @click="handleNavigateToPage(item.route)"
         :class="[
-          'flex items-center mb-3 text-sm font-medium rounded-[2px] px-2 pr-[110px] py-2.5 transition duration-200 cursor-pointer',
-          isActive(item.route).value ? 'bg-gray-200 font-semibold' : 'hover:bg-gray-100'
+          'flex items-center mb-3 text-sm font-medium rounded-[0.25rem] px-2 pr-[6.875rem] py-2.5 transition duration-200 cursor-pointer',
+          activeStates[item.route] ? 'bg-gray-200 font-semibold' : 'hover:bg-gray-100'
         ]"
       >
         <component
           :is="item.icon"
-          :class="['w-5 h-5 mr-3', isActive(item.route).value ? 'text-blue-500' : 'text-gray-500']"
+          :class="['w-5 h-5 mr-3', activeStates[item.route] ? 'text-blue-500' : 'text-gray-500']"
         />
         {{ item.labelName }}
       </div>
       <div class="mt-auto flex justify-start w-full">
-        <SheetFooter
-          ><div class="flex items-center space-x-2 cursor-pointer">
+        <SheetFooter>
+          <div class="flex items-center space-x-2 cursor-pointer">
             <img
               src="../../assets/images/profile_img.jpg"
               alt="User Avatar"
               class="w-10 h-10 rounded-full object-cover"
             />
-            <span class="font-medium text-[14px] text-gray-900">William Smith</span>
-            <Code class="w-4 h-4 text-gray-600 rotate-90" /></div
-        ></SheetFooter>
+            <span class="font-medium text-[14px] text-gray-900">Osifo John</span>
+            <Code class="w-4 h-4 text-gray-600 rotate-90" />
+          </div>
+        </SheetFooter>
       </div>
     </div>
   </div>

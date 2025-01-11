@@ -59,9 +59,9 @@ const sectionsWithProgress = computed(() => {
           {{ courseSections?.numbersOfLecture }} lectures •
           {{ courseSections?.totalLengthDuration }} total length
         </div>
-        <button class="text-[11px] cursor-pointer md:text-sm text-blue-500 underline">
+        <!-- <button class="text-[11px] cursor-pointer md:text-sm text-blue-500 underline">
           Expand all sections
-        </button>
+        </button> -->
       </div>
 
       <Card class="px-0">
