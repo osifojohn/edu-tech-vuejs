@@ -1,6 +1,6 @@
 # **Edu-Tech Frontend**
 
-This project is a dynamic, responsive web application for an education platform, built using **Vue 3**, **TypeScript**, **TailwindCSS**, and **Pinia** for state management. The application interacts with a mock API to fetch and display course data, ensuring a seamless user experience.
+Learned Vue from scratch in just four days and got hands-on experience with it. This project is a dynamic, responsive web application for an education platform, built using **Vue 3**, **TypeScript**, **TailwindCSS**, and **Pinia** for state management. The application interacts with a mock API to fetch and display course data, ensuring a seamless user experience.
 
 ## **Table of Contents**
 
